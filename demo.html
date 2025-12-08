@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialSync Pro - New Features Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .demo-feature { border: 2px solid #2563eb; transition: all 0.3s ease; }
+        .demo-feature:hover { border-color: #059669; background-color: rgba(5, 150, 105, 0.1); }
+    </style>
+</head>
+<body class="gradient-bg text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">SS</span>
+                    </div>
+                    <span class="text-xl font-bold">SocialSync Pro</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Back to Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4" data-splitting>
+                    New Features Demo
+                </h1>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Explore the enhanced SocialSync Pro platform with customer sign-up, API integrations, and advanced automation features.
+                </p>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Sign Up Feature -->
+                <div class="demo-feature bg-white/10 backdrop-blur-sm rounded-2xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center">Customer Sign-Up</h3>
+                    <p class="text-gray-300 mb-6 text-center">New customers can register and connect their social media platforms during onboarding.</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <svg class="w-4 h-4 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Full registration form with validation
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <svg class="w-4 h-4 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Platform selection during signup
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <svg class="w-4 h-4 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Password strength indicator
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <svg class="w-4 h-4 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Social login options (Google, Facebook)
+                        </div>
+                    </div>
+                    <button onclick="window.location.href='signup.html'" class="w-full mt-6 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                        Try Sign-Up Form
+                    </button>
+                </div>
+
+                <!-- API Integration Feature -->
+                <div class="demo-feature bg-white/10 backdrop-blur-sm rounded-2xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center">API Integrations</h3>
+                    <p class="text-gray-300 mb-6 text-center">All your API credentials are integrated for seamless platform connections.</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <svg class="w-4 h-4 mr-2 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            YouTube Data API v3
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <svg class="w-4 h-4 mr-2 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Facebook/Instagram Graph API
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <svg class="w-4 h-4 mr-2 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            TikTok Business API
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <svg class="w-4 h-4 mr-2 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            OAuth 2.0 authentication
+                        </div>
+                    </div>
+                    <button onclick="window.location.href='API_INTEGRATION_GUIDE.md'" class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                        View API Guide
+                    </button>
+                </div>
+
+                <!-- Enhanced Dashboard Feature -->
+                <div class="demo-feature bg-white/10 backdrop-blur-sm rounded-2xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center">Enhanced Dashboard</h3>
+                    <p class="text-gray-300 mb-6 text-center">Real-time analytics and user management for your connected platforms.</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <svg class="w-4 h-4 mr-2 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            User authentication system
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <svg class="w-4 h-4 mr-2 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Platform connection status
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <svg class="w-4 h-4 mr-2 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Real-time statistics
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <svg class="w-4 h-4 mr-2 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Video upload with preview
+                        </div>
+                    </div>
+                    <button onclick="window.location.href='index.html'" class="w-full mt-6 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                        View Dashboard
+                    </button>
+                </div>
+            </div>
+
+            <!-- API Credentials Display -->
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-12">
+                <h2 class="text-3xl font-bold mb-6 text-center">Integrated API Credentials</h2>
+                <p class="text-gray-300 text-center mb-8">All your API credentials are securely integrated and ready to use.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- YouTube -->
+                    <div class="bg-red-600/20 border border-red-500/30 rounded-xl p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center mr-3">
+                                <span class="text-white font-bold text-xs">YT</span>
+                            </div>
+                            <h3 class="text-lg font-semibold">YouTube</h3>
+                        </div>
+                        <div class="space-y-2 text-sm text-gray-300">
+                            <p><span class="text-gray-500">Client ID:</span> ✓ Configured</p>
+                            <p><span class="text-gray-500">API Key:</span> ✓ Configured</p>
+                            <p><span class="text-gray-500">OAuth:</span> ✓ Ready</p>
+                        </div>
+                    </div>
+
+                    <!-- Facebook -->
+                    <div class="bg-blue-600/20 border border-blue-500/30 rounded-xl p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                                <span class="text-white font-bold text-xs">FB</span>
+                            </div>
+                            <h3 class="text-lg font-semibold">Facebook</h3>
+                        </div>
+                        <div class="space-y-2 text-sm text-gray-300">
+                            <p><span class="text-gray-500">App ID:</span> ✓ Configured</p>
+                            <p><span class="text-gray-500">App Secret:</span> ✓ Configured</p>
+                            <p><span class="text-gray-500">OAuth:</span> ✓ Ready</p>
+                        </div>
+                    </div>
+
+                    <!-- Instagram -->
+                    <div class="bg-gradient-to-br from-purple-600 to-pink-600/20 border border-purple-500/30 rounded-xl p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center mr-3">
+                                <span class="text-white font-bold text-xs">IG</span>
+                            </div>
+                            <h3 class="text-lg font-semibold">Instagram</h3>
+                        </div>
+                        <div class="space-y-2 text-sm text-gray-300">
+                            <p><span class="text-gray-500">App ID:</span> ✓ Configured</p>
+                            <p><span class="text-gray-500">App Secret:</span> ✓ Configured</p>
+                            <p><span class="text-gray-500">OAuth:</span> ✓ Ready</p>
+                        </div>
+                    </div>
+
+                    <!-- TikTok -->
+                    <div class="bg-black/20 border border-gray-500/30 rounded-xl p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center mr-3">
+                                <span class="text-white font-bold text-xs">TT</span>
+                            </div>
+                            <h3 class="text-lg font-semibold">TikTok</h3>
+                        </div>
+                        <div class="space-y-2 text-sm text-gray-300">
+                            <p><span class="text-gray-500">Client Key:</span> ✓ Configured</p>
+                            <p><span class="text-gray-500">Client Secret:</span> ✓ Configured</p>
+                            <p><span class="text-gray-500">OAuth:</span> ✓ Ready</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="text-center">
+                <h2 class="text-3xl font-bold mb-8">Quick Actions</h2>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button onclick="window.location.href='signup.html'" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+                        Sign Up Now
+                    </button>
+                    <button onclick="window.location.href='index.html'" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+                        Go to Dashboard
+                    </button>
+                    <button onclick="window.location.href='platforms.html'" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+                        Manage Platforms
+                    </button>
+                    <button onclick="window.location.href='API_INTEGRATION_GUIDE.md'" class="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+                        API Documentation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black/20 backdrop-blur-sm border-t border-white/10 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">&copy; 2024 SocialSync Pro. Enhanced with customer sign-up and full API integrations.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            anime({
+                targets: '.demo-feature',
+                translateY: [50, 0],
+                opacity: [0, 1],
+                duration: 800,
+                delay: anime.stagger(200),
+                easing: 'easeOutQuart'
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - SocialSync Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #2563eb;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body class="gradient-bg text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">SS</span>
+                        </div>
+                        <span class="text-xl font-bold">SocialSync Pro</span>
+                    </div>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+                        <a href="platforms.html" class="text-gray-300 hover:text-white transition-colors">Platforms</a>
+                        <a href="analytics.html" class="text-gray-300 hover:text-white transition-colors">Analytics</a>
+                        <a href="#settings" class="text-blue-400 hover:text-blue-300 transition-colors">Settings</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">
+                        Save Changes
+                    </button>
+                    <div class="w-8 h-8 bg-gray-600 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Settings</h1>
+                    <p class="text-xl text-gray-300">
+                        Customize your SocialSync Pro experience and manage your account preferences.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Settings Content -->
+    <section id="settings" class="pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Settings Navigation -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 sticky top-24">
+                        <h3 class="text-lg font-semibold mb-4">Categories</h3>
+                        <nav class="space-y-2">
+                            <a href="#general" class="block px-4 py-2 rounded-lg bg-blue-600 text-white">General</a>
+                            <a href="#notifications" class="block px-4 py-2 rounded-lg hover:bg-white/10 transition-colors">Notifications</a>
+                            <a href="#privacy" class="block px-4 py-2 rounded-lg hover:bg-white/10 transition-colors">Privacy & Security</a>
+                            <a href="#billing" class="block px-4 py-2 rounded-lg hover:bg-white/10 transition-colors">Billing</a>
+                            <a href="#api" class="block px-4 py-2 rounded-lg hover:bg-white/10 transition-colors">API Keys</a>
+                            <a href="#team" class="block px-4 py-2 rounded-lg hover:bg-white/10 transition-colors">Team</a>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Settings Content -->
+                <div class="lg:col-span-2 space-y-8">
+                    <!-- General Settings -->
+                    <div id="general" class="bg-white/10 backdrop-blur-sm rounded-xl p-8">
+                        <h2 class="text-2xl font-bold mb-6">General Settings</h2>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Account Name</label>
+                                <input type="text" value="John Creator" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-400">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Email Address</label>
+                                <input type="email" value="john@example.com" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-400">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Default Video Privacy</label>
+                                <select class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-400">
+                                    <option>Public</option>
+                                    <option>Unlisted</option>
+                                    <option>Private</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Timezone</label>
+                                <select class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-400">
+                                    <option>UTC-8 (Pacific Time)</option>
+                                    <option>UTC-5 (Eastern Time)</option>
+                                    <option>UTC+0 (GMT)</option>
+                                    <option>UTC+1 (Central European Time)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications -->
+                    <div id="notifications" class="bg-white/10 backdrop-blur-sm rounded-xl p-8">
+                        <h2 class="text-2xl font-bold mb-6">Notification Preferences</h2>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold">Publishing Success</h4>
+                                    <p class="text-sm text-gray-400">Get notified when videos are published successfully</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold">Publishing Failures</h4>
+                                    <p class="text-sm text-gray-400">Get notified when video publishing fails</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold">Weekly Analytics</h4>
+                                    <p class="text-sm text-gray-400">Receive weekly performance summaries</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold">New Followers</h4>
+                                    <p class="text-sm text-gray-400">Get notified about new followers across platforms</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold">Product Updates</h4>
+                                    <p class="text-sm text-gray-400">Receive updates about new SocialSync Pro features</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Privacy & Security -->
+                    <div id="privacy" class="bg-white/10 backdrop-blur-sm rounded-xl p-8">
+                        <h2 class="text-2xl font-bold mb-6">Privacy & Security</h2>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-semibold mb-3">Two-Factor Authentication</h4>
+                                <p class="text-sm text-gray-400 mb-4">Add an extra layer of security to your account</p>
+                                <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">
+                                    Enable 2FA
+                                </button>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold mb-3">Connected Devices</h4>
+                                <p class="text-sm text-gray-400 mb-4">Manage devices with access to your account</p>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+                                        <div>
+                                            <p class="font-medium">MacBook Pro - Chrome</p>
+                                            <p class="text-sm text-gray-400">Last active: 2 minutes ago</p>
+                                        </div>
+                                        <span class="px-3 py-1 bg-green-600 text-xs rounded-full">Current</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+                                        <div>
+                                            <p class="font-medium">iPhone 15 - Safari</p>
+                                            <p class="text-sm text-gray-400">Last active: 1 hour ago</p>
+                                        </div>
+                                        <button class="text-red-400 hover:text-red-300 text-sm">Revoke</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold mb-3">Data Privacy</h4>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <span>Analytics Data Collection</span>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span>Usage Statistics</span>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- API Keys -->
+                    <div id="api" class="bg-white/10 backdrop-blur-sm rounded-xl p-8">
+                        <h2 class="text-2xl font-bold mb-6">API Keys</h2>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold">Primary API Key</h4>
+                                    <p class="text-sm text-gray-400 mono">sk_live_••••••••••••••••••••••••••••••••</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-sm transition-colors">Copy</button>
+                                    <button class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-sm transition-colors">Revoke</button>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold">Test API Key</h4>
+                                    <p class="text-sm text-gray-400 mono">sk_test_••••••••••••••••••••••••••••••••</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-sm transition-colors">Copy</button>
+                                    <button class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-sm transition-colors">Revoke</button>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-4">
+                                <button class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg transition-colors">
+                                    Generate New API Key
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Settings -->
+                    <div id="team" class="bg-white/10 backdrop-blur-sm rounded-xl p-8">
+                        <h2 class="text-2xl font-bold mb-6">Team Management</h2>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-semibold">Team Members</h4>
+                                    <p class="text-sm text-gray-400">Manage who has access to your SocialSync Pro account</p>
+                                </div>
+                                <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">
+                                    Invite Member
+                                </button>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                                            <span class="text-white font-semibold">JD</span>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium">John Doe</p>
+                                            <p class="text-sm text-gray-400">john@example.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <span class="px-3 py-1 bg-green-600 text-xs rounded-full">Owner</span>
+                                        <button class="text-red-400 hover:text-red-300 text-sm">Remove</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center">
+                                            <span class="text-white font-semibold">SM</span>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium">Sarah Miller</p>
+                                            <p class="text-sm text-gray-400">sarah@example.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <select class="bg-white/10 border border-white/20 rounded px-2 py-1 text-sm">
+                                            <option>Admin</option>
+                                            <option>Editor</option>
+                                            <option>Viewer</option>
+                                        </select>
+                                        <button class="text-red-400 hover:text-red-300 text-sm">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/20 backdrop-blur-sm border-t border-white/10 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">&copy; 2024 SocialSync Pro. Empowering creators with intelligent automation.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Settings page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate settings cards on load
+            anime({
+                targets: '.bg-white\\/10',
+                translateY: [50, 0],
+                opacity: [0, 1],
+                duration: 800,
+                delay: anime.stagger(100),
+                easing: 'easeOutQuart'
+            });
+
+            // Handle toggle switches
+            document.querySelectorAll('.toggle-switch input').forEach(toggle => {
+                toggle.addEventListener('change', function() {
+                    anime({
+                        targets: this.nextElementSibling,
+                        scale: [1, 1.1, 1],
+                        duration: 200,
+                        easing: 'easeOutQuart'
+                    });
+                });
+            });
+
+            // Handle navigation clicks
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        
+                        // Update active state
+                        document.querySelectorAll('nav a').forEach(a => {
+                            a.classList.remove('bg-blue-600', 'text-white');
+                            a.classList.add('hover:bg-white/10');
+                        });
+                        this.classList.add('bg-blue-600', 'text-white');
+                        this.classList.remove('hover:bg-white/10');
+                    }
+                });
+            });
+
+            // Handle save changes button
+            document.querySelector('button:contains("Save Changes")') && 
+            document.querySelector('button').addEventListener('click', function() {
+                // Simulate saving
+                const originalText = this.textContent;
+                this.textContent = 'Saving...';
+                this.disabled = true;
+                
+                setTimeout(() => {
+                    this.textContent = 'Saved!';
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.disabled = false;
+                    }, 1000);
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>
